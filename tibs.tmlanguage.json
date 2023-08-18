@@ -63,31 +63,35 @@
 				}
 			]
 		},
-        "bytes": {
-			"begin": "\\<",
+		"bytes": {
+			"begin": "\\|",
 			"beginCaptures": {
 				"0": {
 					"name": "punctuation.definition.bytes.begin.tibs"
 				}
 			},
-			"end": "\\>",
+			"end": "\\|",
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.bytes.end.tibs"
 				}
 			},
-			"name": "meta.structure.bytes.tibs",
+			"name": "string.regexp.hex.tibs",
 			"patterns": [
 				{
-					"match": "([0-9a-fA-F][0-9a-fA-F])+",
-                    "name": "support.bytes.tibs"
+					"include": "#bytescontent"
+				}
+			]
+		},
+		"bytescontent": {
+			"patterns": [
+				{
+					"match": "[0-9a-fA-F][0-9a-fA-F]",
+					"name": "constant.character.bytes.hex.tibs"
 				},
 				{
-                    "include": "#comments"
-				},
-				{
-					"match": "[^\\s\\>]",
-					"name": "invalid.illegal.expected-bytes-separator.tibs"
+					"match": "[^0-9a-fA-F ]",
+					"name": "invalid.illegal.unrecognized-bytes.tibs"
 				}
 			]
 		},
@@ -112,7 +116,11 @@
 		"number": {
             "patterns": [
                 {
-                    "match": "\\b(?:nan|inf|\\-inf)\\b",
+                    "match": "\\b(?:nan|inf)\\b",
+                    "name": "constant.numeric.special.tibs"
+                },
+                {
+                    "match": "\\-inf\\b",
                     "name": "constant.numeric.special.tibs"
                 },
                 {
