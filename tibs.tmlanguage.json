@@ -64,13 +64,13 @@
 			]
 		},
 		"bytes": {
-			"begin": "\\|",
+			"begin": "\\<",
 			"beginCaptures": {
 				"0": {
 					"name": "punctuation.definition.bytes.begin.tibs"
 				}
 			},
-			"end": "\\|",
+			"end": "\\>",
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.bytes.end.tibs"
